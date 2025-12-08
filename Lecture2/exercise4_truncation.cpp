@@ -39,7 +39,8 @@
 
 #include <iostream>
 
-int main() {
+int main()
+{
     std::cout << "--- Exercise 4: Type Conversions ---" << std::endl;
 
     int grade1 = 80;
@@ -50,9 +51,9 @@ int main() {
     // 3.0 is a 'double'.
     // The 'int' is "promoted" to a 'double' for the division.
     double precise_average = (grade1 + grade2 + grade3) / 3.0;
-    
+
     std::cout << "The precise average is: " << precise_average << std::endl;
-    
+
     // Implicit conversion: 'precise_average' (a 'double') is
     // "truncated" to fit into an 'int' box.
     int final_grade_int = precise_average;
@@ -60,12 +61,10 @@ int main() {
     std::cout << "The truncated integer grade is: " << final_grade_int << std::endl;
 
     // --- TASK 2: Use static_cast to round properly ---
-    
-    // int rounded_grade = ...
-    
+    int rounded_grade = static_cast<int>(precise_average + 0.5);
+
     // --- TASK 3: Print your rounded grade ---
-    // std::cout << "The rounded grade is: " << rounded_grade << std::endl;
-    
+    std::cout << "The rounded grade is: " << rounded_grade << std::endl;
 
     std::cout << "------------------------------------" << std::endl;
     return 0;

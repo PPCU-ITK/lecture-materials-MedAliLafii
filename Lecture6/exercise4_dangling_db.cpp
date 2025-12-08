@@ -2,47 +2,43 @@
 #include <string>
 #include <vector>
 
-struct Student {
+struct Student
+{
     int id;
     std::string name;
 };
 
 /**
  * @brief Sets up the student database.
- * * THIS FUNCTION CONTAINS A CRITICAL FLAW.
- * It returns a pointer to memory on its own STACK.
+ * Returns a vector by value to avoid dangling pointers.
  */
-Student* setup_database() {
-    // 'student_db' is a LOCAL ARRAY. It lives on the STACK.
-    Student student_db[] = {
+std::vector<Student> setup_database()
+{
+    // 'student_db' is now a LOCAL VECTOR.
+    std::vector<Student> student_db = {
         {201, "David"},
-        {202, "Eve"}
-    };
-    std::cout << "Inside setup_database():" << std::endl;
-    std::cout << "  'student_db' array is at address: " << &student_db << std::endl;
+        {202, "Eve"}};
+    std::cout << "Inside setup_database(): Creating vector." << std::endl;
 
-    // We return a pointer to the first element
-    return &student_db[0];
+    // We return the vector by value (copy)
+    return student_db;
+}
 
-} // 'student_db' is DESTROYED here. The stack memory is reclaimed.
-
-int main() {
+int main()
+{
     std::cout << "Calling setup_database()..." << std::endl;
-    Student* p_db = setup_database();
-    
+    std::vector<Student> db = setup_database();
+
     std::cout << "\nIn main():" << std::endl;
-    std::cout << "  p_db pointer holds address: " << p_db << std::endl;
+    std::cout << "  Database has " << db.size() << " students." << std::endl;
 
-    // DANGER: We are dereferencing a DANGLING POINTER.
-    // The memory at p_db is no longer valid.
-    // This is Undefined Behavior!
-    std::cout << "  Accessing dangling pointer... " << std::endl;
-    std::cout << "  Found student: " << p_db->name << std::endl; // CRASH or GARBAGE
+    // Now this is safe - we're using the actual vector
+    std::cout << "  First student: " << db[0].name << std::endl;
 
-    // TASK: 
-    // 1. Explain why this code is broken.
-    // 2. Fix it. The best fix is to change 'setup_database' to return
-    //    a 'std::vector<Student>' by value and update 'main' accordingly.
-    
+    // TASK:
+    // 1. We fixed it by returning vector by value.
+    // 2. The previous version crashed because it returned a pointer
+    //    to stack memory that was destroyed when the function returned.
+
     return 0;
 }

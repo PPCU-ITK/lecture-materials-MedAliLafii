@@ -1,6 +1,7 @@
 #include <iostream>
 
-int main() {
+int main()
+{
     // 1. Initialize an array of integers.
     int data[] = {10, 20, 30, 40, 50, 60};
 
@@ -18,10 +19,10 @@ int main() {
     //    using the [ ] operator (e.g., data[i]).
 
     // TODO: Write your for-loop here.
-    // for (...) {
-    //     std::cout << data[i] << " ";
-    // }
-
+    for (int i = 0; i < n; i++)
+    {
+        std::cout << data[i] << " ";
+    }
 
     std::cout << std::endl;
 

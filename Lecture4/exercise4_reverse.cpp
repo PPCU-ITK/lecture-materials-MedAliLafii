@@ -6,24 +6,27 @@
  * @param str A pointer to the first character of
  * the string to be reversed.
  */
-void reverse_string(char* str) {
+void reverse_string(char *str)
+{
     // 1. Create two 'char*' pointers, 'left' and 'right'.
     //    Initialize 'left' to point to the beginning of
     //    the string (str).
-    char* left = str;
+    char *left = str;
 
     // 2. We need to find the end of the string.
     //    If the string is empty (e.g., *str == '\0'),
     //    just return.
-    if (!str || !*str) {
+    if (!str || !*str)
+    {
         return;
     }
 
     //    Create 'right' and initialize it to 'str'.
     //    Then, loop 'right' forward until it finds
     //    the null terminator.
-    char* right = str;
-    while (*(right + 1) != '\0') {
+    char *right = str;
+    while (*(right + 1) != '\0')
+    {
         right++;
     }
 
@@ -45,17 +48,18 @@ void reverse_string(char* str) {
     //    e) Decrement 'right' (right--).
 
     // TODO: Write your while-loop here.
-    // while (left < right) {
-    //    ...
-    //    ...
-    //    ...
-    //    ...
-    //    ...
-    // }
+    while (left < right)
+    {
+        char temp_char = *left;
+        *left = *right;
+        *right = temp_char;
+        left++;
+        right--;
+    }
 }
 
-
-int main() {
+int main()
+{
     char name[] = "Bjarne Stroustrup";
 
     std::cout << "Original:  " << name << std::endl;

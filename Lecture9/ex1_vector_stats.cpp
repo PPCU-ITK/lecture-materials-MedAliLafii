@@ -3,8 +3,10 @@
 #include <algorithm> // Useful for sorting if you do the bonus
 #include <numeric>   // Useful for std::accumulate
 
-void analyze_data(const std::vector<int>& data) {
-    if (data.empty()) {
+void analyze_data(const std::vector<int> &data)
+{
+    if (data.empty())
+    {
         std::cout << "No data to analyze." << std::endl;
         return;
     }
@@ -12,11 +14,14 @@ void analyze_data(const std::vector<int>& data) {
     // TODO: Calculate the mean (average)
     double mean = 0.0;
     // Hint: Iterate and sum, or use std::accumulate
+    mean = std::accumulate(data.begin(), data.end(), 0.0) / data.size();
 
     // TODO: Find the min and max elements
     int min_val = 0;
     int max_val = 0;
     // Hint: You can iterate, or use std::min_element / std::max_element
+    min_val = *std::min_element(data.begin(), data.end());
+    max_val = *std::max_element(data.begin(), data.end());
 
     std::cout << "Statistics:" << std::endl;
     std::cout << "  Count: " << data.size() << std::endl;
@@ -25,10 +30,11 @@ void analyze_data(const std::vector<int>& data) {
     std::cout << "  Max:   " << max_val << std::endl;
 }
 
-int main() {
+int main()
+{
     // Test data
     std::vector<int> readings = {12, 5, 89, 5, 43, 12, 9, 100, 54};
-    
+
     std::cout << "Analyzing sensor readings..." << std::endl;
     analyze_data(readings);
 

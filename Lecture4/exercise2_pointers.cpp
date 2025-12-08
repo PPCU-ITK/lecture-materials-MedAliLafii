@@ -1,6 +1,7 @@
 #include <iostream>
 
-int main() {
+int main()
+{
     int data[] = {10, 20, 30, 40, 50, 60};
     int n = sizeof(data) / sizeof(data[0]);
 
@@ -8,12 +9,12 @@ int main() {
     //    first element of 'data'.
     //    (Hint: The array's name 'data' IS a pointer
     //    to the first element!)
-    int* p = data;
+    int *p = data;
 
     // 2. Create a "past-the-end" pointer 'p_end'.
     //    This pointer should point to the address
     //    JUST AFTER the last element (data[5]).
-    int* p_end = data + n;
+    int *p_end = data + n;
 
     std::cout << "--- Printing with *p operator ---" << std::endl;
 
@@ -27,10 +28,11 @@ int main() {
     //       move it to the next element.
 
     // TODO: Write your while-loop here.
-    // while (p != p_end) {
-    //    ...
-    //    ...
-    // }
+    while (p != p_end)
+    {
+        std::cout << *p << " ";
+        p++;
+    }
 
     std::cout << std::endl;
 

@@ -10,7 +10,8 @@
  * @return The number of characters in the string,
  * NOT including the null terminator.
  */
-int my_strlen(const char* str) {
+int my_strlen(const char *str)
+{
     // 1. Initialize a counter variable for the length.
     int length = 0;
 
@@ -24,18 +25,18 @@ int my_strlen(const char* str) {
     //       the next character.
 
     // TODO: Write your while-loop here.
-    // while (*str != '\0') {
-    //    ...
-    //    ...
-    // }
-
+    while (*str != '\0')
+    {
+        length++;
+        str++;
+    }
 
     // 4. Return the final length.
     return length;
 }
 
-
-int main() {
+int main()
+{
     char greeting[] = "Hello, C++!";
 
     int len = my_strlen(greeting);
